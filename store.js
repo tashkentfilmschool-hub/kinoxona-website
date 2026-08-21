@@ -42,6 +42,7 @@ const storeTranslations = {
     heritageCopy: "Современная печатная серия о важных фильмах, режиссёрах и визуальной культуре узбекского экрана.",
     zineTitle: "Зин «Память экрана»",
     zineCopy: "Фотографии, афиши, заметки и разговоры первых сезонов Kinoxona в одном небольшом издании.",
+    viewProduct: "Открыть товар ↗",
     sestraTeeTitle: "Футболка SES TRA",
     sestraTeeCopy: "Чёрная футболка свободного кроя с розовым логотипом независимого ташкентского продакшена SES TRA.",
     sestraHoodieTitle: "Худи SES TRA",
@@ -105,6 +106,7 @@ const storeTranslations = {
     heritageCopy: "A contemporary print series devoted to key films, filmmakers and the visual culture of the Uzbek screen.",
     zineTitle: "Screen Memory zine",
     zineCopy: "Photographs, posters, notes and conversations from Kinoxona’s first seasons in one compact edition.",
+    viewProduct: "View product ↗",
     sestraTeeTitle: "SES TRA T-shirt",
     sestraTeeCopy: "A relaxed black T-shirt carrying the pink mark of the independent Tashkent production company SES TRA.",
     sestraHoodieTitle: "SES TRA hoodie",
@@ -168,6 +170,7 @@ const storeTranslations = {
     heritageCopy: "O‘zbek ekranining muhim filmlari, rejissyorlari va vizual madaniyatiga bag‘ishlangan zamonaviy bosma turkum.",
     zineTitle: "«Ekran xotirasi» zini",
     zineCopy: "Kinoxona’ning ilk mavsumlaridagi suratlar, afishalar, qaydlar va suhbatlar jamlangan ixcham nashr.",
+    viewProduct: "Mahsulotni ochish ↗",
     sestraTeeTitle: "SES TRA futbolkasi",
     sestraTeeCopy: "Mustaqil Toshkent prodakshni SES TRA’ning pushti logotipi tushirilgan erkin bichimli qora futbolka.",
     sestraHoodieTitle: "SES TRA hudisi",
@@ -260,4 +263,27 @@ const storeObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".reveal").forEach((element) => storeObserver.observe(element));
 document.querySelector("#year").textContent = new Date().getFullYear();
+
+document.querySelectorAll("[data-product]").forEach((card) => {
+  const productUrl = `product.html?id=${encodeURIComponent(card.dataset.product)}`;
+  const visual = card.querySelector(".product-visual");
+  const openLabel = document.createElement("span");
+  openLabel.className = "product-open";
+  openLabel.dataset.i18n = "viewProduct";
+  visual?.append(openLabel);
+
+  card.classList.add("product-card-clickable");
+  card.setAttribute("role", "link");
+  card.setAttribute("tabindex", "0");
+
+  const openProduct = () => { window.location.href = productUrl; };
+  card.addEventListener("click", openProduct);
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openProduct();
+    }
+  });
+});
+
 setStoreLanguage(storeLanguage);
