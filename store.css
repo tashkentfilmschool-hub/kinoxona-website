@@ -374,6 +374,10 @@
 .photo-hoodie { object-position: center 28%; }
 .photo-cap { object-position: center 12%; }
 .photo-tote { object-position: center 72%; }
+.photo-sestra-tee { object-position: center 30%; }
+.photo-sestra-hoodie { object-position: center 36%; }
+.photo-sestra-tote { object-position: center 58%; }
+.photo-sestra-cap { object-position: center 24%; }
 
 .poster-set {
   min-height: 38rem;
