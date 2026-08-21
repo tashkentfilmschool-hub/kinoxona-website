@@ -250,10 +250,50 @@
 }
 
 .product-card {
+  position: relative;
   min-width: 0;
   display: grid;
   grid-template-rows: minmax(27rem, 1fr) auto;
   background: var(--ink-soft);
+}
+
+.product-card-clickable {
+  cursor: pointer;
+  transition: background-color 220ms ease, transform 220ms ease;
+}
+
+.product-card-clickable:hover {
+  z-index: 2;
+  background: #1b1b18;
+}
+
+.product-card-clickable:focus-visible {
+  z-index: 3;
+  outline: 3px solid var(--acid);
+  outline-offset: -3px;
+}
+
+.product-open {
+  position: absolute;
+  z-index: 5;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.55rem 0.7rem;
+  background: var(--acid);
+  color: var(--ink);
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  text-transform: uppercase;
+  transform: translateY(-0.35rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.product-card-clickable:hover .product-open,
+.product-card-clickable:focus-visible .product-open {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .product-card-wide {
@@ -374,10 +414,10 @@
 .photo-hoodie { object-position: center 28%; }
 .photo-cap { object-position: center 12%; }
 .photo-tote { object-position: center 72%; }
-.photo-sestra-tee { object-position: center 30%; }
-.photo-sestra-hoodie { object-position: center 36%; }
-.photo-sestra-tote { object-position: center 58%; }
-.photo-sestra-cap { object-position: center 24%; }
+.photo-sestra-tee { object-position: center 34%; }
+.photo-sestra-hoodie { object-position: center 35%; }
+.photo-sestra-tote { object-position: center 48%; }
+.photo-sestra-cap { object-position: center 22%; }
 
 .poster-set {
   min-height: 38rem;
@@ -553,11 +593,12 @@
 
 .heritage-print > img {
   position: absolute;
-  inset: 8% auto auto 9%;
-  width: 55%;
-  height: 84%;
-  object-fit: cover;
-  filter: saturate(0.75) contrast(1.08);
+  inset: 7% auto auto 6%;
+  width: 54%;
+  height: 86%;
+  object-fit: contain;
+  filter: none;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
 }
 
 .heritage-print > div {
@@ -592,6 +633,35 @@
 .zine-mock span,
 .zine-mock small { font-size: 0.55rem; font-weight: 900; letter-spacing: 0.12em; }
 .zine-mock strong { margin: auto 0; font-family: var(--display); font-size: clamp(3.4rem, 7vw, 6.5rem); letter-spacing: -0.08em; line-height: 0.76; }
+
+.zine-preview {
+  position: absolute;
+  inset: 8% 7%;
+}
+
+.zine-preview img {
+  position: absolute;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.28);
+}
+
+.zine-preview img:first-child {
+  z-index: 2;
+  left: 4%;
+  top: 1%;
+  width: 41%;
+  height: 92%;
+  transform: rotate(-4deg);
+}
+
+.zine-preview img:last-child {
+  right: 0;
+  top: 18%;
+  width: 69%;
+  height: 63%;
+  transform: rotate(3deg);
+}
 
 .store-principles {
   display: grid;

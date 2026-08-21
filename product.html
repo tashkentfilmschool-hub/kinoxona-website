@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Карточка товара Kinoxona Store." />
+    <meta name="theme-color" content="#0b0b09" />
+    <title>Kinoxona Store — товар</title>
+    <link rel="icon" href="assets/kinoxona-logo.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="store.css" />
+    <link rel="stylesheet" href="product.css" />
+    <script src="product.js" defer></script>
+  </head>
+  <body class="store-page product-page">
+    <a class="skip-link" href="#product-main" data-i18n="skipContent">К содержанию</a>
+
+    <header class="site-header store-header is-scrolled" data-header>
+      <a class="brand" href="index.html" aria-label="Kinoxona — на главную" data-i18n-aria="homeLabel">
+        <img src="assets/kinoxona-logo.png" alt="Kinoxona" />
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="product-nav">
+        <span></span><span></span>
+        <span class="sr-only" data-i18n="openMenu">Открыть меню</span>
+      </button>
+
+      <nav class="main-nav" id="product-nav" aria-label="Основная навигация" data-i18n-aria="mainNavigation">
+        <a href="store.html#collection" data-i18n="navStore">Магазин</a>
+        <a href="store.html#idea" data-i18n="navIdea">Идея</a>
+        <a href="index.html" data-i18n="navCinema">В кинотеатр</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="language-switch" aria-label="Language selection">
+          <button class="language-button is-active" type="button" data-lang="ru">RU</button>
+          <span>/</span>
+          <button class="language-button" type="button" data-lang="en">EN</button>
+          <span>/</span>
+          <button class="language-button" type="button" data-lang="uz">UZ</button>
+        </div>
+        <a class="ticket-link" href="store.html#collection">
+          <span data-i18n="backStoreShort">Store</span>
+          <span aria-hidden="true">↙</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="product-main">
+      <a class="product-back" href="store.html#collection">
+        <span aria-hidden="true">←</span>
+        <span data-i18n="backStore">Вернуться в коллекцию</span>
+      </a>
+
+      <section class="product-detail" aria-labelledby="product-title">
+        <div class="product-gallery" aria-label="Галерея товара" data-i18n-aria="galleryLabel">
+          <div class="product-main-image">
+            <img id="product-image" src="" alt="" />
+            <span class="product-image-count" id="product-image-count">01 / 01</span>
+          </div>
+          <div class="product-thumbnails" id="product-thumbnails"></div>
+        </div>
+
+        <aside class="product-summary">
+          <div class="product-summary-meta">
+            <span id="product-code">Wear / 09</span>
+            <span data-i18n="pilotStatus">Пилотная модель</span>
+          </div>
+          <p class="product-brand" id="product-brand">Kinoxona Store</p>
+          <h1 id="product-title">Товар</h1>
+          <p class="product-description" id="product-description"></p>
+
+          <div class="product-price-row">
+            <strong id="product-price"></strong>
+            <span data-i18n="comingSoon">Скоро</span>
+          </div>
+
+          <div class="product-options" id="product-options">
+            <div class="product-options-label">
+              <span data-i18n="chooseOption">Выберите размер</span>
+              <button type="button" data-i18n="sizeGuide">Размерная сетка</button>
+            </div>
+            <div class="product-option-list" id="product-option-list"></div>
+          </div>
+
+          <button class="product-cart-button" id="product-cart-button" type="button">
+            <span data-i18n="addToCart">Положить в корзину</span>
+            <span aria-hidden="true">＋</span>
+          </button>
+          <p class="product-cart-note" id="product-cart-note" aria-live="polite" hidden></p>
+
+          <dl class="product-specs">
+            <div><dt data-i18n="materialLabel">Материал</dt><dd id="product-material"></dd></div>
+            <div><dt data-i18n="formatLabel">Формат</dt><dd id="product-format"></dd></div>
+            <div><dt data-i18n="productionLabel">Производство</dt><dd data-i18n="productionValue">Планируется в Ташкенте</dd></div>
+            <div><dt data-i18n="deliveryLabel">Доставка</dt><dd data-i18n="deliveryValue">Условия объявим перед запуском</dd></div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="product-editorial">
+        <p class="store-overline" data-i18n="aboutObject">О предмете</p>
+        <h2 id="product-story-title"></h2>
+        <p id="product-story"></p>
+      </section>
+    </main>
+
+    <footer class="site-footer store-footer product-footer-site">
+      <div class="footer-logo"><img src="assets/kinoxona-logo.png" alt="Kinoxona" /></div>
+      <p data-i18n="footerCopy">Концепт магазина. Финальные модели, наличие и даты запуска будут объявлены отдельно.</p>
+      <div class="footer-links">
+        <a href="store.html#collection" data-i18n="backStore">Вернуться в коллекцию</a>
+        <a href="https://www.instagram.com/kinoxona_tfs/" target="_blank" rel="noreferrer">Instagram ↗</a>
+      </div>
+      <p class="copyright">© <span id="year"></span> Kinoxona Store</p>
+    </footer>
+  </body>
+</html>
