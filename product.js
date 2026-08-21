@@ -108,7 +108,7 @@ const productCatalog = {
   },
   "kinoxona-tee": {
     code: "Wear / 02", brand: "Kinoxona", price: "280 000 UZS", options: ["XS", "S", "M", "L", "XL"],
-    gallery: ["assets/store-kinoxona-tee.webp"],
+    gallery: ["assets/store-kinoxona-tee-commerce.webp", "assets/store-kinoxona-tee.webp"],
     title: localized("Футболка «50 мест»", "50 Seats T-shirt", "«50 o‘rin» futbolkasi"),
     description: localized("Тяжёлый хлопок, свободный крой и знак камерного зала Kinoxona.", "Heavyweight cotton, relaxed cut and the mark of Kinoxona’s intimate auditorium.", "Qalin paxta, erkin bichim va Kinoxona kamerali zalining belgisi."),
     material: localized("Хлопок · 240 GSM", "Cotton · 240 GSM", "Paxta · 240 GSM"),
@@ -128,7 +128,7 @@ const productCatalog = {
   },
   "sokrat-hoodie": {
     code: "Wear / 04", brand: "Kinoxona", price: "520 000 UZS", options: ["S", "M", "L", "XL"],
-    gallery: ["assets/store-sokrat-hoodie.webp"],
+    gallery: ["assets/store-sokrat-hoodie-commerce.webp", "assets/store-sokrat-hoodie.webp"],
     title: localized("Худи «Сократа, 10»", "10 Sokrat hoodie", "«Sokrat, 10» hudisi"),
     description: localized("Плотное чёрное худи с адресом кинотеатра и координатами Ташкента.", "A heavyweight black hoodie carrying the cinema address and Tashkent coordinates.", "Kinoteatr manzili va Toshkent koordinatalari tushirilgan qalin qora hudi."),
     material: localized("Хлопковый футер · 460 GSM", "Cotton fleece · 460 GSM", "Paxta futer · 460 GSM"),
@@ -138,7 +138,7 @@ const productCatalog = {
   },
   "coordinates-cap": {
     code: "Wear / 05", brand: "Kinoxona", price: "190 000 UZS", options: ["ONE"],
-    gallery: ["assets/store-cap-tote.webp"],
+    gallery: ["assets/store-coordinates-cap-commerce.webp", "assets/store-cap-tote.webp"],
     title: localized("Кепка «Координаты»", "Coordinates cap", "«Koordinatalar» kepkasi"),
     description: localized("Шестипанельная кепка с маленькой вышивкой координат Kinoxona.", "A six-panel cap with small embroidered Kinoxona coordinates.", "Kinoxona koordinatalari kichik kashta bilan tushirilgan olti panelli kepka."),
     material: localized("Хлопковый твил", "Cotton twill", "Paxta tvil"),
@@ -169,7 +169,7 @@ const productCatalog = {
   },
   "screen-memory-zine": {
     code: "Edition / 08", brand: "Kinoxona Archive", price: "150 000 UZS", options: ["ONE"],
-    gallery: ["assets/store-screen-memory-cover.webp", "assets/store-screen-memory-spread-01.webp", "assets/store-screen-memory-spread-02.webp"],
+    gallery: ["assets/store-screen-memory-book.webp", "assets/store-screen-memory-cover.webp", "assets/store-screen-memory-spread-01.webp", "assets/store-screen-memory-spread-02.webp"],
     title: localized("Зин «Память экрана»", "Screen Memory zine", "«Ekran xotirasi» zini"),
     description: localized("96 страниц с фотографиями, афишами, заметками и разговорами первых сезонов Kinoxona.", "A 96-page collection of photographs, posters, notes and conversations from Kinoxona’s first seasons.", "Kinoxona’ning ilk mavsumlaridan suratlar, afishalar, qaydlar va suhbatlar jamlangan 96 sahifali nashr."),
     material: localized("Офсетная бумага и плотная обложка", "Offset paper and heavyweight cover", "Ofset qog‘ozi va qalin muqova"),
