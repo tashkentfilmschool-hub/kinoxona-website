@@ -38,6 +38,12 @@ const translations = {
     showLess: "Свернуть архив",
     archiveNote: "Архив собран по официальным публикациям Kinoxona и будет дополняться.",
     archiveBadge: "Архив",
+    openDetails: "Открыть событие",
+    closeDialog: "Закрыть",
+    dateLabel: "Дата",
+    timeLabel: "Время",
+    filmLabel: "Фильм",
+    sourcePost: "Официальная публикация",
     aboutEyebrow: "Кинотеатр как место встречи",
     aboutTitle: "Маленький зал.<br>Большое кино.",
     aboutLead: "Kinoxona — первый специализированный артхаусный кинотеатр в Ташкенте.",
@@ -99,6 +105,12 @@ const translations = {
     showLess: "Arxivni yopish",
     archiveNote: "Arxiv Kinoxona rasmiy postlari asosida tuzilgan va to‘ldirib boriladi.",
     archiveBadge: "Arxiv",
+    openDetails: "Tadbirni ochish",
+    closeDialog: "Yopish",
+    dateLabel: "Sana",
+    timeLabel: "Vaqt",
+    filmLabel: "Film",
+    sourcePost: "Rasmiy post",
     aboutEyebrow: "Kinoteatr — uchrashuv joyi",
     aboutTitle: "Kichik zal.<br>Katta kino.",
     aboutLead: "Kinoxona — Toshkentdagi birinchi ixtisoslashgan arthouse kinoteatri.",
@@ -131,12 +143,31 @@ const monthFormat = {
 let currentLanguage = localStorage.getItem("kinoxona-language") || "ru";
 let screenings = [];
 let archiveExpanded = false;
+let currentScreeningIndex = null;
 
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector(".menu-toggle");
 const mainNav = document.querySelector(".main-nav");
 const archiveGrid = document.querySelector("#archive-grid");
 const archiveToggle = document.querySelector("#archive-toggle");
+const screeningDialog = document.querySelector("#screening-dialog");
+const dialogImage = document.querySelector("#dialog-image");
+const dialogNote = document.querySelector("#dialog-note");
+const dialogTitle = document.querySelector("#dialog-title");
+const dialogDate = document.querySelector("#dialog-date");
+const dialogTime = document.querySelector("#dialog-time");
+const dialogFilm = document.querySelector("#dialog-film");
+const dialogDescription = document.querySelector("#dialog-description");
+const dialogSource = document.querySelector("#dialog-source");
+
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
 function setLanguage(language) {
   currentLanguage = language;
@@ -158,6 +189,7 @@ function setLanguage(language) {
     : "Kinoxona — Toshkentdagi arthouse kinoteatri";
 
   renderArchive();
+  if (screeningDialog?.open) renderDialog();
 }
 
 function getScreeningDescription(screening) {
@@ -176,14 +208,16 @@ function renderArchive() {
     const date = monthFormat[currentLanguage].format(new Date(`${screening.date}T12:00:00`));
     const title = screening[`title_${currentLanguage}`] || screening.title;
     const notes = screening[`notes_${currentLanguage}`] || screening.notes;
-    const note = notes ? `<span class="card-note">${notes}</span>` : "";
+    const safeTitle = escapeHtml(title);
+    const note = notes ? `<span class="card-note">${escapeHtml(notes)}</span>` : "";
     const image = screening.image
-      ? `<img class="card-image" src="${screening.image}" alt="" loading="lazy"><span class="card-shade" aria-hidden="true"></span>`
+      ? `<img class="card-image" src="${escapeHtml(screening.image)}" alt="${safeTitle}" loading="lazy"><span class="card-shade" aria-hidden="true"></span>`
       : "";
     const cardClass = screening.image ? "screening-card screening-card-photo" : "screening-card";
+    const ariaLabel = `${translations[currentLanguage].openDetails}: ${title}`;
 
     return `
-      <article class="${cardClass}">
+      <button class="${cardClass}" type="button" data-screening-index="${index}" aria-label="${escapeHtml(ariaLabel)}">
         ${image}
         <div class="card-top">
           <span>${date}</span>
@@ -191,16 +225,68 @@ function renderArchive() {
         </div>
         <div class="card-bottom">
           ${note}
-          <h3>${title}</h3>
-          <p class="card-meta">${getScreeningDescription(screening)}</p>
+          <h3>${safeTitle}</h3>
+          <p class="card-meta">${escapeHtml(getScreeningDescription(screening))}</p>
+          <span class="card-open">${translations[currentLanguage].openDetails} ↗</span>
         </div>
-      </article>
+      </button>
     `;
   }).join("");
+
+  archiveGrid.querySelectorAll(".card-image").forEach((image) => {
+    const markMissing = () => image.closest(".screening-card")?.classList.add("image-missing");
+    image.addEventListener("error", markMissing, { once: true });
+    if (image.complete && image.naturalWidth === 0) markMissing();
+  });
 
   const label = archiveExpanded ? translations[currentLanguage].showLess : translations[currentLanguage].showMore;
   archiveToggle.querySelector("span:first-child").textContent = label;
   archiveToggle.querySelector("span:last-child").textContent = archiveExpanded ? "−" : "＋";
+}
+
+function renderDialog() {
+  const screening = screenings[currentScreeningIndex];
+  if (!screening) return;
+
+  const title = screening[`title_${currentLanguage}`] || screening.title;
+  const notes = screening[`notes_${currentLanguage}`] || screening.notes || translations[currentLanguage].archiveBadge;
+  const description = screening[`description_${currentLanguage}`] || screening.description || "";
+  const date = monthFormat[currentLanguage].format(new Date(`${screening.date}T12:00:00`));
+
+  dialogTitle.textContent = title;
+  dialogNote.textContent = notes;
+  dialogDate.textContent = date;
+  dialogTime.textContent = screening.time || "—";
+  dialogFilm.textContent = getScreeningDescription(screening) || "—";
+  dialogDescription.textContent = description;
+
+  if (screening.image) {
+    dialogImage.src = screening.image;
+    dialogImage.alt = title;
+    dialogImage.closest(".dialog-poster").hidden = false;
+  } else {
+    dialogImage.removeAttribute("src");
+    dialogImage.alt = "";
+    dialogImage.closest(".dialog-poster").hidden = true;
+  }
+
+  if (screening.source) {
+    dialogSource.href = screening.source;
+    dialogSource.hidden = false;
+  } else {
+    dialogSource.hidden = true;
+  }
+}
+
+function openScreening(index) {
+  currentScreeningIndex = index;
+  renderDialog();
+  screeningDialog?.showModal();
+  document.body.classList.add("dialog-open");
+}
+
+function closeScreening() {
+  screeningDialog?.close();
 }
 
 async function loadScreenings() {
@@ -231,6 +317,24 @@ document.querySelectorAll("[data-lang]").forEach((button) => {
 archiveToggle?.addEventListener("click", () => {
   archiveExpanded = !archiveExpanded;
   renderArchive();
+});
+
+archiveGrid?.addEventListener("click", (event) => {
+  const card = event.target.closest("[data-screening-index]");
+  if (!card) return;
+  openScreening(Number(card.dataset.screeningIndex));
+});
+
+document.querySelectorAll("[data-dialog-close]").forEach((button) => {
+  button.addEventListener("click", closeScreening);
+});
+
+screeningDialog?.addEventListener("click", (event) => {
+  if (event.target === screeningDialog) closeScreening();
+});
+
+screeningDialog?.addEventListener("close", () => {
+  document.body.classList.remove("dialog-open");
 });
 
 menuToggle?.addEventListener("click", () => {

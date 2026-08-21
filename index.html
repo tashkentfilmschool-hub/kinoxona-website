@@ -229,6 +229,41 @@
         </div>
       </section>
 
+      <dialog class="screening-dialog" id="screening-dialog" aria-labelledby="dialog-title">
+        <div class="dialog-layout">
+          <figure class="dialog-poster">
+            <img id="dialog-image" alt="" />
+          </figure>
+          <div class="dialog-content">
+            <button class="dialog-close" type="button" data-dialog-close>
+              <span data-i18n="closeDialog">Закрыть</span>
+              <span aria-hidden="true">×</span>
+            </button>
+            <p class="dialog-eyebrow" id="dialog-note"></p>
+            <h2 id="dialog-title"></h2>
+            <dl class="dialog-facts">
+              <div>
+                <dt data-i18n="dateLabel">Дата</dt>
+                <dd id="dialog-date"></dd>
+              </div>
+              <div>
+                <dt data-i18n="timeLabel">Время</dt>
+                <dd id="dialog-time"></dd>
+              </div>
+              <div>
+                <dt data-i18n="filmLabel">Фильм</dt>
+                <dd id="dialog-film"></dd>
+              </div>
+            </dl>
+            <p class="dialog-description" id="dialog-description"></p>
+            <a class="text-link dialog-source" id="dialog-source" href="#" target="_blank" rel="noreferrer">
+              <span data-i18n="sourcePost">Официальная публикация</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </dialog>
+
       <section class="about section-red" id="about">
         <div class="section-heading reveal">
           <p class="section-number">03</p>
