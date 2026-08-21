@@ -1357,7 +1357,14 @@ body.dialog-open {
   }
 
   .language-switch {
-    display: none;
+    position: fixed;
+    right: 4.5rem;
+    top: 1.15rem;
+    z-index: 20;
+    display: flex;
+    padding: 0.25rem 0.4rem;
+    background: rgba(10, 10, 10, 0.78);
+    backdrop-filter: blur(8px);
   }
 
   .hero h1 span:nth-child(2),
@@ -1472,6 +1479,18 @@ body.dialog-open {
   }
 
   .header-actions {
+    position: fixed;
+    z-index: 103;
+    top: 1.05rem;
+    right: 4.5rem;
+    display: flex;
+  }
+
+  .header-actions .language-switch {
+    position: static;
+  }
+
+  .header-actions .ticket-link {
     display: none;
   }
 

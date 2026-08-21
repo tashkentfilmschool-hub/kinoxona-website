@@ -20,19 +20,19 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">К содержанию</a>
+    <a class="skip-link" href="#main" data-i18n="skipContent">К содержанию</a>
 
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="Kinoxona — на главную">
+      <a class="brand" href="#top" aria-label="Kinoxona — на главную" data-i18n-aria="homeLabel">
         <img src="assets/kinoxona-logo.png" alt="Kinoxona" />
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
         <span></span><span></span>
-        <span class="sr-only">Открыть меню</span>
+        <span class="sr-only" data-i18n="openMenu">Открыть меню</span>
       </button>
 
-      <nav class="main-nav" id="main-nav" aria-label="Основная навигация">
+      <nav class="main-nav" id="main-nav" aria-label="Основная навигация" data-i18n-aria="mainNavigation">
         <a href="#program" data-i18n="navProgram">Афиша</a>
         <a href="#archive" data-i18n="navArchive">Архив</a>
         <a href="#about" data-i18n="navAbout">О нас</a>
@@ -40,8 +40,10 @@
       </nav>
 
       <div class="header-actions">
-        <div class="language-switch" aria-label="Выбор языка">
+        <div class="language-switch" aria-label="Language selection">
           <button class="language-button is-active" type="button" data-lang="ru">RU</button>
+          <span>/</span>
+          <button class="language-button" type="button" data-lang="en">EN</button>
           <span>/</span>
           <button class="language-button" type="button" data-lang="uz">UZ</button>
         </div>
@@ -335,6 +337,7 @@
               target="_blank"
               rel="noreferrer"
               aria-label="Открыть Kinoxona на карте"
+              data-i18n-aria="mapLabel"
             >
               <span data-i18n="openMap">Открыть карту</span> ↗
             </a>

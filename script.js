@@ -1,5 +1,11 @@
 const translations = {
   ru: {
+    skipContent: "К содержанию",
+    homeLabel: "Kinoxona — на главную",
+    openMenu: "Открыть меню",
+    mainNavigation: "Основная навигация",
+    mapLabel: "Открыть Kinoxona на карте",
+    archiveUnavailable: "Архив временно недоступен.",
     navProgram: "Афиша",
     navArchive: "Архив",
     navAbout: "О нас",
@@ -66,7 +72,86 @@ const translations = {
     buyTickets: "Купить билет",
     footerDescription: "Независимый арт-кинотеатр при Tashkent Film School."
   },
+  en: {
+    skipContent: "Skip to content",
+    homeLabel: "Kinoxona — home",
+    openMenu: "Open menu",
+    mainNavigation: "Main navigation",
+    mapLabel: "Open Kinoxona on the map",
+    archiveUnavailable: "The archive is temporarily unavailable.",
+    navProgram: "Programme",
+    navArchive: "Archive",
+    navAbout: "About",
+    navVisit: "Visit",
+    tickets: "Tickets",
+    city: "Tashkent",
+    independent: "Independent cinema",
+    heroEyebrow: "The city’s first dedicated arthouse cinema",
+    heroLineOne: "Watch",
+    heroLineTwo: "closely.",
+    heroLineThree: "Talk",
+    heroLineFour: "about what matters.",
+    heroCopy: "Auteur, festival and classic cinema on the big screen — followed by conversations after the screening.",
+    seeProgram: "View programme",
+    nextUp: "Next at Kinoxona",
+    programTitle: "A new season<br>is coming",
+    announcingSoon: "See you in autumn",
+    programFeatureTitle: "Kinoxona is on summer break",
+    programFeatureCopy: "The cinema is taking a break until autumn. The new season will return with screenings and conversations about film — announcements will appear on Instagram.",
+    seasonBreakCaption: "Official announcement · June 2026",
+    statusLabel: "Status",
+    statusValue: "Summer break",
+    seasonLabel: "Returns",
+    seasonValue: "Autumn 2026",
+    announcementsLabel: "Updates",
+    formatLabel: "Format",
+    formatValue: "Film + conversation",
+    placeLabel: "Venue",
+    placeValue: "10 Sokrat Street",
+    priceLabel: "Tickets",
+    followAnnouncements: "Follow updates",
+    memory: "Screen memory",
+    archiveTitle: "Screening<br>archive",
+    archiveIntro: "Films, talks and special events that have already taken place in our auditorium.",
+    showMore: "Show more",
+    showLess: "Collapse archive",
+    archiveNote: "The archive is compiled from Kinoxona’s official posts and will continue to grow.",
+    archiveBadge: "Archive",
+    openDetails: "Open event",
+    closeDialog: "Close",
+    dateLabel: "Date",
+    timeLabel: "Time",
+    filmLabel: "Film",
+    sourcePost: "Official post",
+    aboutEyebrow: "Cinema as a meeting place",
+    aboutTitle: "Small room.<br>Big cinema.",
+    aboutLead: "Kinoxona is Tashkent’s first dedicated arthouse cinema.",
+    aboutCopyOne: "We opened in summer 2024 as part of the independent Tashkent Film School. We screen licensed films — from world masterpieces to new work by Central Asian filmmakers.",
+    aboutCopyTwo: "After many screenings we stay in the room to discuss what we have seen with directors, film critics and one another.",
+    screenings2025: "screenings in 2025",
+    festivals2025: "film festivals in 2025",
+    opened: "Kinoxona opened",
+    conversation: "conversations after the credits",
+    aboutPhotoCaption: "Kinoxona · 2025 in review",
+    manifesto: "“Not simply to screen films, but to build a culture of attentive viewing and lively conversation about cinema.”",
+    comeOver: "Come by",
+    visitTitle: "10 Sokrat<br>Street",
+    openMap: "Open map",
+    addressLabel: "Address",
+    addressValue: "10 Sokrat Street, Tashkent",
+    phoneLabel: "Phone",
+    beforeVisit: "Before your visit",
+    visitCopy: "Please arrive 10–15 minutes before the screening. Parking nearby is limited, so allow extra time.",
+    buyTickets: "Buy tickets",
+    footerDescription: "An independent arthouse cinema at Tashkent Film School."
+  },
   uz: {
+    skipContent: "Asosiy qismga o‘tish",
+    homeLabel: "Kinoxona — bosh sahifa",
+    openMenu: "Menyuni ochish",
+    mainNavigation: "Asosiy navigatsiya",
+    mapLabel: "Kinoxona’ni xaritada ochish",
+    archiveUnavailable: "Arxiv vaqtincha ishlamayapti.",
     navProgram: "Afisha",
     navArchive: "Arxiv",
     navAbout: "Biz haqimizda",
@@ -137,10 +222,18 @@ const translations = {
 
 const monthFormat = {
   ru: new Intl.DateTimeFormat("ru-RU", { day: "2-digit", month: "long", year: "numeric" }),
+  en: new Intl.DateTimeFormat("en-GB", { day: "2-digit", month: "long", year: "numeric" }),
   uz: new Intl.DateTimeFormat("uz-UZ", { day: "2-digit", month: "long", year: "numeric" })
 };
 
-let currentLanguage = localStorage.getItem("kinoxona-language") || "ru";
+const pageTitles = {
+  ru: "Kinoxona — арт-кинотеатр в Ташкенте",
+  en: "Kinoxona — arthouse cinema in Tashkent",
+  uz: "Kinoxona — Toshkentdagi arthouse kinoteatri"
+};
+
+const savedLanguage = localStorage.getItem("kinoxona-language");
+let currentLanguage = Object.hasOwn(translations, savedLanguage) ? savedLanguage : "ru";
 let screenings = [];
 let archiveExpanded = false;
 let currentScreeningIndex = null;
@@ -180,13 +273,17 @@ function setLanguage(language) {
     if (value) element.innerHTML = value;
   });
 
-  document.querySelectorAll("[data-lang]").forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.lang === language);
+  document.querySelectorAll("[data-i18n-aria]").forEach((element) => {
+    const value = translations[language][element.dataset.i18nAria];
+    if (value) element.setAttribute("aria-label", value);
   });
 
-  document.title = language === "ru"
-    ? "Kinoxona — арт-кинотеатр в Ташкенте"
-    : "Kinoxona — Toshkentdagi arthouse kinoteatri";
+  document.querySelectorAll("[data-lang]").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.lang === language);
+    button.setAttribute("aria-pressed", String(button.dataset.lang === language));
+  });
+
+  document.title = pageTitles[language];
 
   renderArchive();
   if (screeningDialog?.open) renderDialog();
@@ -306,7 +403,7 @@ async function loadScreenings() {
     renderArchive();
   } catch (error) {
     console.error(error);
-    archiveGrid.innerHTML = "<p>Архив временно недоступен.</p>";
+    archiveGrid.innerHTML = `<p>${translations[currentLanguage].archiveUnavailable}</p>`;
   }
 }
 
