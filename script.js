@@ -16,9 +16,15 @@ const translations = {
     seeProgram: "Смотреть афишу",
     nextUp: "Дальше в Kinoxona",
     programTitle: "Новый сезон<br>уже близко",
-    announcingSoon: "Скоро объявим",
-    programFeatureTitle: "Новая программа показов",
-    programFeatureCopy: "Мы собираем следующий сезон. Премьеры, фестивальные открытия, классика и встречи с авторами — всё расписание сначала появляется в Instagram.",
+    announcingSoon: "До встречи осенью",
+    programFeatureTitle: "Kinoxona на летних каникулах",
+    programFeatureCopy: "Кинотеатр взял паузу до осени. Новый сезон вернётся с программой показов и разговоров о кино — анонсы появятся в Instagram.",
+    seasonBreakCaption: "Официальный анонс · июнь 2026",
+    statusLabel: "Статус",
+    statusValue: "Летняя пауза",
+    seasonLabel: "Возвращение",
+    seasonValue: "Осень 2026",
+    announcementsLabel: "Анонсы",
     formatLabel: "Формат",
     formatValue: "Фильм + разговор",
     placeLabel: "Место",
@@ -30,17 +36,18 @@ const translations = {
     archiveIntro: "Фильмы, встречи и специальные события, которые уже случились в нашем зале.",
     showMore: "Показать ещё",
     showLess: "Свернуть архив",
-    archiveNote: "Архив составлен по открытым данным и будет дополняться.",
+    archiveNote: "Архив собран по официальным публикациям Kinoxona и будет дополняться.",
     archiveBadge: "Архив",
     aboutEyebrow: "Кинотеатр как место встречи",
     aboutTitle: "Маленький зал.<br>Большое кино.",
     aboutLead: "Kinoxona — первый специализированный артхаусный кинотеатр в Ташкенте.",
     aboutCopyOne: "Мы открылись летом 2024 года при независимой киношколе Tashkent Film School. Показываем лицензированные фильмы — от мировых шедевров до новых работ режиссёров Центральной Азии.",
     aboutCopyTwo: "После многих сеансов остаёмся в зале: обсуждаем увиденное с режиссёрами, кинокритиками и друг с другом.",
-    seats: "мест в камерном зале",
-    speakers: "колонок объёмного звука",
+    screenings2025: "кинопоказа в 2025 году",
+    festivals2025: "кинофестивалей в 2025 году",
     opened: "год открытия Kinoxona",
     conversation: "разговоров после титров",
+    aboutPhotoCaption: "Kinoxona · итоги 2025 года",
     manifesto: "«Не просто показать фильм, а создать культуру внимательного просмотра и живого разговора о кино».",
     comeOver: "Приходите",
     visitTitle: "Улица<br>Сократа, 10",
@@ -70,9 +77,15 @@ const translations = {
     seeProgram: "Afisha bilan tanishish",
     nextUp: "Kinoxona'da navbatdagi",
     programTitle: "Yangi mavsum<br>yaqinlashmoqda",
-    announcingSoon: "Tez orada e'lon qilamiz",
-    programFeatureTitle: "Yangi namoyishlar dasturi",
-    programFeatureCopy: "Keyingi mavsumni tayyorlayapmiz. Premyeralar, festival kashfiyotlari, klassika va mualliflar bilan uchrashuvlar — to‘liq jadval avval Instagram'da chiqadi.",
+    announcingSoon: "Kuzda ko‘rishamiz",
+    programFeatureTitle: "Kinoxona yozgi ta'tilda",
+    programFeatureCopy: "Kinoteatr kuzgacha tanaffus oldi. Yangi mavsum kino namoyishlari va suhbatlar dasturi bilan qaytadi — e'lonlar Instagram'da chiqadi.",
+    seasonBreakCaption: "Rasmiy e'lon · 2026-yil iyun",
+    statusLabel: "Holat",
+    statusValue: "Yozgi tanaffus",
+    seasonLabel: "Qaytish",
+    seasonValue: "2026-yil kuz",
+    announcementsLabel: "E'lonlar",
     formatLabel: "Format",
     formatValue: "Film + suhbat",
     placeLabel: "Manzil",
@@ -84,17 +97,18 @@ const translations = {
     archiveIntro: "Zalimizda bo‘lib o‘tgan filmlar, uchrashuvlar va maxsus tadbirlar.",
     showMore: "Yana ko‘rsatish",
     showLess: "Arxivni yopish",
-    archiveNote: "Arxiv ochiq ma’lumotlardan tuzilgan va to‘ldirib boriladi.",
+    archiveNote: "Arxiv Kinoxona rasmiy postlari asosida tuzilgan va to‘ldirib boriladi.",
     archiveBadge: "Arxiv",
     aboutEyebrow: "Kinoteatr — uchrashuv joyi",
     aboutTitle: "Kichik zal.<br>Katta kino.",
     aboutLead: "Kinoxona — Toshkentdagi birinchi ixtisoslashgan arthouse kinoteatri.",
     aboutCopyOne: "Biz 2024-yil yozida mustaqil Tashkent Film School kinomaktabi qoshida ochildik. Jahon durdonalaridan Markaziy Osiyo rejissyorlarining yangi ishlarigacha bo‘lgan litsenziyalangan filmlarni namoyish etamiz.",
     aboutCopyTwo: "Ko‘p seanslardan so‘ng zalda qolamiz: ko‘rganlarimizni rejissyorlar, kinotanqidchilar va bir-birimiz bilan muhokama qilamiz.",
-    seats: "o‘rinli qulay zal",
-    speakers: "hajmli ovoz kolonkasi",
+    screenings2025: "2025-yilda o‘tkazilgan namoyish",
+    festivals2025: "2025-yilda o‘tkazilgan kinofestival",
     opened: "Kinoxona ochilgan yil",
     conversation: "titrlardan keyingi suhbatlar",
+    aboutPhotoCaption: "Kinoxona · 2025-yil yakunlari",
     manifesto: "«Filmni shunchaki ko‘rsatish emas, balki diqqat bilan tomosha qilish va kino haqida jonli suhbat madaniyatini yaratish».",
     comeOver: "Tashrif buyuring",
     visitTitle: "Sokrat<br>ko‘chasi, 10",
@@ -148,7 +162,8 @@ function setLanguage(language) {
 
 function getScreeningDescription(screening) {
   const parts = [];
-  if (screening.director) parts.push(screening.director);
+  const director = screening[`director_${currentLanguage}`] || screening.director;
+  if (director) parts.push(director);
   if (screening.year) parts.push(screening.year);
   return parts.join(" · ");
 }
@@ -159,17 +174,24 @@ function renderArchive() {
   const visible = archiveExpanded ? screenings : screenings.slice(0, 6);
   archiveGrid.innerHTML = visible.map((screening, index) => {
     const date = monthFormat[currentLanguage].format(new Date(`${screening.date}T12:00:00`));
-    const note = screening.notes ? `<span class="card-note">${screening.notes}</span>` : "";
+    const title = screening[`title_${currentLanguage}`] || screening.title;
+    const notes = screening[`notes_${currentLanguage}`] || screening.notes;
+    const note = notes ? `<span class="card-note">${notes}</span>` : "";
+    const image = screening.image
+      ? `<img class="card-image" src="${screening.image}" alt="" loading="lazy"><span class="card-shade" aria-hidden="true"></span>`
+      : "";
+    const cardClass = screening.image ? "screening-card screening-card-photo" : "screening-card";
 
     return `
-      <article class="screening-card">
+      <article class="${cardClass}">
+        ${image}
         <div class="card-top">
           <span>${date}</span>
           <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
         </div>
         <div class="card-bottom">
           ${note}
-          <h3>${screening.title}</h3>
+          <h3>${title}</h3>
           <p class="card-meta">${getScreeningDescription(screening)}</p>
         </div>
       </article>
