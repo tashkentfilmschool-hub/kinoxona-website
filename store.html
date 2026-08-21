@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kinoxona Store — предварительный каталог одежды, постеров и печатных изданий независимого кинотеатра в Ташкенте."
+    />
+    <meta name="theme-color" content="#0b0b09" />
+    <meta property="og:title" content="Kinoxona Store — кино, которое можно унести" />
+    <meta
+      property="og:description"
+      content="Одежда, архивные постеры, печатные издания и предметы, вдохновлённые кино и Ташкентом."
+    />
+    <meta property="og:type" content="website" />
+    <title>Kinoxona Store — предварительный каталог</title>
+    <link rel="icon" href="assets/kinoxona-logo.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="store.css" />
+    <script src="store.js" defer></script>
+  </head>
+  <body class="store-page">
+    <a class="skip-link" href="#store-main" data-i18n="skipContent">К содержанию</a>
+
+    <header class="site-header store-header" data-header>
+      <a class="brand" href="index.html" aria-label="Kinoxona — на главную" data-i18n-aria="homeLabel">
+        <img src="assets/kinoxona-logo.png" alt="Kinoxona" />
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="store-nav">
+        <span></span><span></span>
+        <span class="sr-only" data-i18n="openMenu">Открыть меню</span>
+      </button>
+
+      <nav class="main-nav" id="store-nav" aria-label="Основная навигация" data-i18n-aria="mainNavigation">
+        <a href="#collection" data-i18n="navCollection">Коллекция</a>
+        <a href="#idea" data-i18n="navIdea">Идея</a>
+        <a href="index.html" data-i18n="navCinema">В кинотеатр</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="language-switch" aria-label="Language selection">
+          <button class="language-button is-active" type="button" data-lang="ru">RU</button>
+          <span>/</span>
+          <button class="language-button" type="button" data-lang="en">EN</button>
+          <span>/</span>
+          <button class="language-button" type="button" data-lang="uz">UZ</button>
+        </div>
+        <a class="ticket-link" href="https://www.instagram.com/kinoxona_tfs/" target="_blank" rel="noreferrer">
+          <span>Instagram</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="store-main">
+      <section class="store-hero" id="top">
+        <img class="store-hero-image" src="assets/store-hero.webp" alt="" />
+        <div class="store-hero-overlay" aria-hidden="true"></div>
+        <div class="store-hero-copy reveal">
+          <div class="store-kicker">
+            <span data-i18n="pilot">Пилотный каталог</span>
+            <span class="status-dot" aria-hidden="true"></span>
+            <span data-i18n="comingSoon">Скоро</span>
+          </div>
+          <p class="store-overline">Kinoxona Store · Tashkent</p>
+          <h1 data-i18n="heroTitle">Кино, которое<br />можно унести.</h1>
+          <p class="store-hero-text" data-i18n="heroCopy">
+            Одежда, печатная графика и предметы, в которых продолжается память нашего экрана.
+          </p>
+          <a class="store-button" href="#collection">
+            <span data-i18n="viewCollection">Смотреть коллекцию</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+        <div class="store-hero-meta reveal">
+          <span>01 / 08</span>
+          <span data-i18n="madeIn">Сделано в Ташкенте</span>
+          <span data-i18n="smallRuns">Малые тиражи</span>
+        </div>
+      </section>
+
+      <div class="store-ticker" aria-hidden="true">
+        <div>
+          KINOXONA STORE · WEAR THE SCREEN · PRINT THE MEMORY · MADE IN TASHKENT ·
+          KINOXONA STORE · WEAR THE SCREEN · PRINT THE MEMORY · MADE IN TASHKENT ·
+        </div>
+      </div>
+
+      <section class="store-idea" id="idea">
+        <div class="store-section-label reveal">
+          <span>01</span>
+          <span data-i18n="ideaEyebrow">Не сувенирная лавка</span>
+        </div>
+        <div class="store-idea-copy reveal">
+          <h2 data-i18n="ideaTitle">Продолжение<br />экрана.</h2>
+          <div>
+            <p class="store-lead" data-i18n="ideaLead">
+              Мы собираем вещи вокруг кино, Ташкента и культуры внимательного просмотра.
+            </p>
+            <p data-i18n="ideaCopy">
+              Это предварительный каталог: сначала хотим понять, какие предметы нужны зрителям, а затем выпустить лучшие идеи небольшими локальными тиражами.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="store-collection" id="collection">
+        <div class="store-collection-heading reveal">
+          <div class="store-section-label">
+            <span>02</span>
+            <span data-i18n="collectionEyebrow">Первый дроп</span>
+          </div>
+          <h2 data-i18n="collectionTitle">Предварительная<br />коллекция</h2>
+          <p data-i18n="collectionCopy">Восемь направлений, из которых может сложиться первый Kinoxona Store.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card product-card-wide reveal">
+            <div class="product-visual poster-set">
+              <img src="assets/screening-sorrentino.jpg" alt="" loading="lazy" />
+              <img src="assets/screening-alisher-navoi.jpg" alt="" loading="lazy" />
+              <img src="assets/screening-breathless.jpg" alt="" loading="lazy" />
+              <span class="edition-mark">01 / 50</span>
+            </div>
+            <div class="product-info">
+              <div class="product-meta"><span>Print / 01</span><span data-i18n="limited">Лимитированный тираж</span></div>
+              <h3 data-i18n="posterTitle">Постеры «Память экрана»</h3>
+              <p data-i18n="posterCopy">Нумерованные репринты афиш прошедших показов: плотная бумага, тиснение и архивный штамп Kinoxona.</p>
+              <div class="product-footer"><span data-i18n="posterPrice">от 90 000 UZS</span><span class="product-status" data-i18n="soon">Скоро</span></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-visual visual-black">
+              <div class="tee-mock tee-black"><img src="assets/kinoxona-logo.png" alt="" /></div>
+              <span class="visual-code">50 / SEATS</span>
+            </div>
+            <div class="product-info">
+              <div class="product-meta"><span>Wear / 02</span><span>240 GSM</span></div>
+              <h3 data-i18n="kinoxonaTeeTitle">Футболка «50 мест»</h3>
+              <p data-i18n="kinoxonaTeeCopy">Тяжёлый хлопок, свободный крой, маленькая координата на груди и знак Kinoxona на спине.</p>
+              <div class="product-footer"><span>280 000 UZS</span><span class="product-status" data-i18n="soon">Скоро</span></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-visual visual-cream">
+              <div class="tee-mock tee-cream"><strong>TFS</strong><small>FILM IS A SCHOOL</small></div>
+              <span class="visual-code">EST. 2022</span>
+            </div>
+            <div class="product-info">
+              <div class="product-meta"><span>Wear / 03</span><span>Tashkent Film School</span></div>
+              <h3 data-i18n="tfsTeeTitle">Футболка TFS</h3>
+              <p data-i18n="tfsTeeCopy">Базовая футболка киношколы: типографика, учебные метки и фраза «Film is a school».</p>
+              <div class="product-footer"><span>260 000 UZS</span><span class="product-status" data-i18n="soon">Скоро</span></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-visual visual-blue">
+              <div class="hoodie-mock"><span>10</span><small>SOKRAT</small></div>
+              <span class="visual-code">41°18′N</span>
+            </div>
+            <div class="product-info">
+              <div class="product-meta"><span>Wear / 04</span><span>460 GSM</span></div>
+              <h3 data-i18n="hoodieTitle">Худи «Сократа, 10»</h3>
+              <p data-i18n="hoodieCopy">Плотное чёрное худи с адресом кинотеатра и координатами Ташкента.</p>
+              <div class="product-footer"><span>520 000 UZS</span><span class="product-status" data-i18n="soon">Скоро</span></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-visual visual-red">
+              <div class="cap-mock"><span>69°16′E</span></div>
+              <span class="visual-code">TASHKENT</span>
+            </div>
+            <div class="product-info">
+              <div class="product-meta"><span>Wear / 05</span><span>One size</span></div>
+              <h3 data-i18n="capTitle">Кепка «Координаты»</h3>
+              <p data-i18n="capCopy">Шестипанельная кепка с маленькой вышивкой координат Kinoxona.</p>
+              <div class="product-footer"><span>190 000 UZS</span><span class="product-status" data-i18n="soon">Скоро</span></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-visual visual-acid">
+              <div class="tote-mock"><div class="ornament-grid" aria-hidden="true"></div><span>FILM / ORNAMENT</span></div>
+              <span class="visual-code">LOCAL CANVAS</span>
+            </div>
+            <div class="product-info">
+              <div class="product-meta"><span>Object / 06</span><span data-i18n="localTextile">Локальный текстиль</span></div>
+              <h3 data-i18n="toteTitle">Шопер «Кино и орнамент»</h3>
+              <p data-i18n="toteCopy">Геометрия киноплёнки встречается с ритмами узбекского иката — без фольклорного китча.</p>
+              <div class="product-footer"><span>170 000 UZS</span><span class="product-status" data-i18n="soon">Скоро</span></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-visual heritage-print">
+              <img src="assets/screening-alisher-navoi.jpg" alt="" loading="lazy" />
+              <div><span>UZBEK CINEMA</span><strong>1947</strong></div>
+            </div>
+            <div class="product-info">
+              <div class="product-meta"><span>Heritage / 07</span><span data-i18n="researchSeries">Исследовательская серия</span></div>
+              <h3 data-i18n="heritageTitle">Принт «История узбекского кино»</h3>
+              <p data-i18n="heritageCopy">Современная печатная серия о важных фильмах, режиссёрах и визуальной культуре узбекского экрана.</p>
+              <div class="product-footer"><span>120 000 UZS</span><span class="product-status" data-i18n="soon">Скоро</span></div>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-visual visual-paper">
+              <div class="zine-mock"><span>KINOXONA</span><strong>SCREEN<br />MEMORY</strong><small>2024—2026</small></div>
+              <span class="visual-code">96 PAGES</span>
+            </div>
+            <div class="product-info">
+              <div class="product-meta"><span>Edition / 08</span><span>RU / EN / UZ</span></div>
+              <h3 data-i18n="zineTitle">Зин «Память экрана»</h3>
+              <p data-i18n="zineCopy">Фотографии, афиши, заметки и разговоры первых сезонов Kinoxona в одном небольшом издании.</p>
+              <div class="product-footer"><span>150 000 UZS</span><span class="product-status" data-i18n="soon">Скоро</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="store-principles">
+        <article class="reveal"><span>01</span><h3 data-i18n="principleOneTitle">Малые тиражи</h3><p data-i18n="principleOneCopy">Производить столько, сколько действительно нужно зрителям.</p></article>
+        <article class="reveal"><span>02</span><h3 data-i18n="principleTwoTitle">Локальное производство</h3><p data-i18n="principleTwoCopy">Печать, пошив и упаковка — по возможности в Ташкенте.</p></article>
+        <article class="reveal"><span>03</span><h3 data-i18n="principleThreeTitle">Архив как материал</h3><p data-i18n="principleThreeCopy">Каждая вещь продолжает реальную историю показов и встреч.</p></article>
+      </section>
+
+      <section class="store-cta">
+        <p class="store-overline">Kinoxona Store · Pilot</p>
+        <h2 data-i18n="ctaTitle">Что выпустить<br />первым?</h2>
+        <p data-i18n="ctaCopy">Напишите нам в Instagram — ответы помогут собрать первый настоящий дроп.</p>
+        <a class="store-button store-button-light" href="https://www.instagram.com/kinoxona_tfs/" target="_blank" rel="noreferrer">
+          <span data-i18n="writeInstagram">Написать в Instagram</span><span aria-hidden="true">↗</span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer store-footer">
+      <div class="footer-logo"><img src="assets/kinoxona-logo.png" alt="Kinoxona" /></div>
+      <p data-i18n="footerCopy">Предварительный каталог. Финальные модели, цены и даты выпуска будут объявлены отдельно.</p>
+      <div class="footer-links">
+        <a href="index.html" data-i18n="backCinema">Вернуться в кинотеатр</a>
+        <a href="https://www.instagram.com/kinoxona_tfs/" target="_blank" rel="noreferrer">Instagram ↗</a>
+      </div>
+      <p class="copyright">© <span id="year"></span> Kinoxona Store</p>
+    </footer>
+  </body>
+</html>
