@@ -102,7 +102,7 @@ const productCatalog = {
     price: "от 90 000 UZS",
     options: ["A3", "A2"],
     gallery: [
-      galleryScene("poster-wall", localized("Три постера Kinoxona в интерьере кинотеатра", "Three Kinoxona posters in a cinema interior", "Kinoteatr interyeridagi uchta Kinoxona posteri")),
+      galleryScene("poster-wall", localized("Афиша Kinoxona и фотопортрет в интерьере кинотеатра", "A Kinoxona poster and framed portrait in the cinema interior", "Kinoteatr interyeridagi Kinoxona afishasi va ramkadagi portret")),
       "assets/screening-sorrentino.jpg",
       "assets/screening-alisher-navoi.jpg",
       "assets/screening-breathless.jpg"
@@ -264,17 +264,13 @@ const productNav = document.querySelector(".main-nav");
 const posterScenes = {
   "poster-wall": {
     className: "poster-room-set",
-    background: "assets/store-poster-wall-v2.webp",
-    posters: [
-      ["assets/screening-sorrentino.jpg", "poster-frame-left"],
-      ["assets/store-easter-portrait.webp", "poster-frame-right poster-easter-portrait"],
-      ["assets/screening-alisher-navoi.jpg", "poster-frame-lower"]
-    ]
+    background: "assets/store-poster-scene-v3.webp",
+    posters: []
   },
   "navoi-wall": {
     className: "poster-room-navoi",
-    background: "assets/store-navoi-wall.webp",
-    posters: [["assets/screening-alisher-navoi.jpg", "poster-frame-navoi"]]
+    background: "assets/store-navoi-scene-v2.webp",
+    posters: []
   }
 };
 

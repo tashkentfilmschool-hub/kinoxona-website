@@ -457,50 +457,6 @@
   object-fit: cover;
 }
 
-.poster-in-frame {
-  position: absolute;
-  z-index: 2;
-  width: auto;
-  height: auto;
-  padding: 0;
-  background: transparent;
-  object-fit: cover;
-  filter: saturate(0.92) contrast(0.98);
-}
-
-.poster-frame-left {
-  left: 15.9%;
-  top: 17.55%;
-  width: 26.35%;
-  height: 24.15%;
-}
-
-.poster-frame-right {
-  left: 62.3%;
-  top: 10.95%;
-  width: 26.3%;
-  height: 23.3%;
-}
-
-.poster-frame-lower {
-  left: 46.2%;
-  top: 39.55%;
-  width: 24.1%;
-  height: 21.3%;
-  clip-path: polygon(0 0, 100% 0, 100% 29%, 96% 31%, 93% 35%, 91% 43%, 87% 53%, 80% 65%, 72% 76%, 65% 89%, 61% 100%, 0 100%);
-}
-
-.poster-easter-portrait {
-  object-position: 50% 44%;
-}
-
-.poster-frame-navoi {
-  left: 32.8%;
-  top: 16.2%;
-  width: 37.7%;
-  height: 36.5%;
-}
-
 .poster-room .edition-mark,
 .poster-room .visual-code {
   padding: 0.5rem 0.65rem;
