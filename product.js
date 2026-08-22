@@ -238,6 +238,56 @@ const productCatalog = {
     format: localized("Шесть панелей · регулируемый размер", "Six panels · adjustable fit", "Olti panel · sozlanadigan o‘lcham"),
     storyTitle: localized("Маленький знак", "A small mark", "Kichik belgi"),
     story: localized("Вместо крупного принта — аккуратная вышивка. Галерея показывает реальную форму кепки, изгиб козырька и нить крупным планом.", "Instead of a large print, the cap uses precise embroidery. The gallery shows its true shape, curved brim and thread detail.", "Katta print o‘rniga aniq kashta ishlatilgan. Galereyada kepkaning haqiqiy shakli, soyabon egri chizig‘i va ip detallari ko‘rsatiladi.")
+  },
+  "kinoxona-signature-cap": {
+    code: "Wear / 13", brand: "Kinoxona", price: "220 000 UZS", options: ["ONE"],
+    gallery: ["assets/store-kinoxona-signature-cap-commerce.webp", "assets/store-kinoxona-signature-cap-product.webp", "assets/store-kinoxona-signature-cap-detail.webp"],
+    title: localized("Кепка «Подпись»", "Signature cap", "«Imzo» kepkasi"),
+    description: localized("Чёрная шестипанельная кепка с полной рукописной подписью Kinoxona и кислотной меткой сбоку.", "A black six-panel cap with the full handwritten Kinoxona wordmark and an acid-lime side marker.", "Kinoxona’ning to‘liq qo‘lyozma imzosi va yonida yorqin laym belgisi bo‘lgan qora olti panelli kepka."),
+    material: localized("Хлопковый твил · вышивка", "Cotton twill · embroidery", "Paxta tvil · kashta"),
+    format: localized("Шесть панелей · регулируемый размер", "Six panels · adjustable fit", "Olti panel · sozlanadigan o‘lcham"),
+    storyTitle: localized("Подпись на свету", "A signature in the light", "Yorug‘likdagi imzo"),
+    story: localized("Белая нить повторяет живой знак Kinoxona, а маленький лаймовый квадрат работает как метка нужного кадра. В галерее видны посадка, чистый силуэт и вышивка крупным планом.", "White thread recreates Kinoxona’s living mark, while a small lime square works like a selected-frame marker. The gallery shows the fit, clean silhouette and embroidery up close.", "Oq ip Kinoxona’ning jonli belgisini takrorlaydi, kichik laym kvadrat esa tanlangan kadr belgisi kabi ishlaydi. Galereyada kepkaning turishi, toza silueti va kashtasi yaqin ko‘rinishda namoyon bo‘ladi.")
+  },
+  "kinoxona-after-credits-tee": {
+    code: "Wear / 14", brand: "Kinoxona", price: "310 000 UZS", options: ["XS", "S", "M", "L", "XL"],
+    gallery: ["assets/store-kinoxona-after-credits-tee-commerce.webp", "assets/store-kinoxona-after-credits-tee-product.webp", "assets/store-kinoxona-after-credits-tee-detail.webp"],
+    title: localized("Футболка «После титров»", "After Credits T-shirt", "«Titrlardan keyin» futbolkasi"),
+    description: localized("Тяжёлая чёрная футболка свободного кроя с большой подписью Kinoxona на спине.", "A heavyweight relaxed black T-shirt with the large Kinoxona signature across the back.", "Orqasida katta Kinoxona imzosi bo‘lgan qalin, erkin bichimli qora futbolka."),
+    material: localized("Плотный хлопок · 260 GSM", "Heavy cotton · 260 GSM", "Qalin paxta · 260 GSM"),
+    format: localized("Oversize · унисекс", "Oversized · unisex", "Oversize · uniseks"),
+    storyTitle: localized("Остаться после", "Stay after", "Titrlardan keyin qolish"),
+    story: localized("Подпись появляется на спине как последний титр, который зритель уносит из зала. Маленькая лаймовая метка у нижнего шва завершает вещь.", "The signature appears across the back like a final credit carried out of the auditorium. A small lime marker at the hem completes the piece.", "Imzo orqada zaldan olib chiqiladigan so‘nggi titr kabi paydo bo‘ladi. Pastki chokdagi kichik laym belgi buyumni yakunlaydi.")
+  },
+  "kinoxona-backpack": {
+    code: "Carry / 15", brand: "Kinoxona", price: "690 000 UZS", options: ["ONE"],
+    gallery: ["assets/store-kinoxona-backpack-commerce.webp", "assets/store-kinoxona-backpack-product.webp", "assets/store-kinoxona-backpack-detail.webp"],
+    title: localized("Рюкзак «50 мест»", "50 Seats backpack", "«50 o‘rin» ryukzagi"),
+    description: localized("Технический городской рюкзак с отделением для 16-дюймового ноутбука, лаймовыми молниями и красной меткой места.", "A technical city backpack with a 16-inch laptop sleeve, lime zips and a red seat marker.", "16 dyuymli noutbuk bo‘limi, laym fermuarlar va qizil o‘rindiq belgisi bo‘lgan texnik shahar ryukzagi."),
+    material: localized("Переработанный баллистический нейлон", "Recycled ballistic nylon", "Qayta ishlangan ballistik neylon"),
+    format: localized("22 л · ноутбук до 16″", "22 L · laptop up to 16″", "22 l · 16″ gacha noutbuk"),
+    storyTitle: localized("Место для всего", "A seat for everything", "Har bir buyumga joy"),
+    story: localized("Строгий прямоугольный корпус напоминает небольшой переносной экран. Внутри — организованный рабочий отсек для дня между монтажной, школой и вечерним сеансом.", "The strict rectangular shell resembles a small portable screen. Inside is an organised work compartment for a day moving between the edit suite, school and evening screening.", "Qat’iy to‘rtburchak korpus kichik ko‘chma ekranni eslatadi. Ichkarida montaj xonasi, maktab va kechki namoyish oralig‘idagi kun uchun tartibli ish bo‘limi bor.")
+  },
+  "kinoxona-ticket-wallet": {
+    code: "Object / 16", brand: "Kinoxona", price: "260 000 UZS", options: ["ONE"],
+    gallery: ["assets/store-kinoxona-ticket-wallet-commerce.webp", "assets/store-kinoxona-ticket-wallet-product.webp", "assets/store-kinoxona-ticket-wallet-detail.webp"],
+    title: localized("Кошелёк «Билет»", "Ticket wallet", "«Bilet» hamyoni"),
+    description: localized("Тонкий чёрный кожаный кошелёк с лаймовой подкладкой и отдельным карманом для билета.", "A slim black leather wallet with an acid-lime lining and a dedicated ticket pocket.", "Laym astarli va bilet uchun alohida cho‘ntakli yupqa qora charm hamyon."),
+    material: localized("Кожа растительного дубления", "Vegetable-tanned leather", "O‘simlik usulida oshlangan charm"),
+    format: localized("Купюры · 6 карт · билет", "Notes · 6 cards · ticket", "Pul · 6 karta · bilet"),
+    storyTitle: localized("Билет остаётся", "Keep the ticket", "Bilet qoladi"),
+    story: localized("Снаружи — почти незаметное тиснение, внутри — яркий цвет зала перед началом фильма. Отдельный карман сохраняет билет как маленький материальный след вечера.", "Outside, the mark is almost invisible; inside is the vivid colour of an auditorium before the film begins. A dedicated pocket keeps the ticket as a small physical trace of the evening.", "Tashqarida belgi deyarli sezilmaydi, ichkarida esa film boshlanishidan oldingi zalning yorqin rangi bor. Alohida cho‘ntak biletni kechaning kichik moddiy izi sifatida saqlaydi.")
+  },
+  "kinoxona-red-screen-lamp": {
+    code: "Light / 17", brand: "Kinoxona Objects", price: "780 000 UZS", options: ["ONE"],
+    gallery: ["assets/store-kinoxona-red-screen-lamp-commerce.webp", "assets/store-kinoxona-red-screen-lamp-product.webp", "assets/store-kinoxona-red-screen-lamp-detail.webp"],
+    title: localized("Светильник «Красный экран»", "Red Screen lamp", "«Qizil ekran» chirog‘i"),
+    description: localized("Переносной светильник из чёрного алюминия и литого красного стекла, похожий на миниатюрный экран.", "A portable lamp in black aluminium and cast red glass, shaped like a miniature screen.", "Qora alyuminiy va quyma qizil shishadan ishlangan, kichik ekranga o‘xshash ko‘chma chiroq."),
+    material: localized("Анодированный алюминий · литое стекло", "Anodised aluminium · cast glass", "Anodlangan alyuminiy · quyma shisha"),
+    format: localized("USB-C · регулировка яркости · аккумулятор", "USB-C · dimmable · rechargeable", "USB-C · yorqinlik sozlamasi · akkumulyator"),
+    storyTitle: localized("Свет после титров", "Light after the credits", "Titrlardan keyingi yorug‘lik"),
+    story: localized("Необычный предмет капсулы превращает красный свет кинозала в домашний объект. Он мягко подсвечивает стол, полку или стопку книг и выглядит как включённый экран без изображения.", "The capsule’s unexpected object turns the red light of the cinema into something for the home. It softly lights a table, shelf or stack of books and looks like a screen switched on without an image.", "Kapsulaning noodatiy buyumi kinoteatrning qizil yorug‘ligini uy ob’yektiga aylantiradi. U stol, tokcha yoki kitoblar to‘plamini yumshoq yoritadi va tasvirsiz yoqilgan ekran kabi ko‘rinadi.")
   }
 };
 
