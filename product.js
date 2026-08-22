@@ -12,6 +12,9 @@ const productInterface = {
     backStoreShort: "Store",
     backStore: "Вернуться в коллекцию",
     galleryLabel: "Галерея товара",
+    galleryHint: "Листайте фотографии стрелками или движением пальца",
+    previousImage: "Предыдущее фото",
+    nextImage: "Следующее фото",
     pilotStatus: "Пилотная модель",
     comingSoon: "Скоро",
     chooseOption: "Выберите размер",
@@ -39,6 +42,9 @@ const productInterface = {
     backStoreShort: "Store",
     backStore: "Back to collection",
     galleryLabel: "Product gallery",
+    galleryHint: "Browse the photographs with arrows or a swipe",
+    previousImage: "Previous photo",
+    nextImage: "Next photo",
     pilotStatus: "Pilot model",
     comingSoon: "Coming soon",
     chooseOption: "Choose a size",
@@ -66,6 +72,9 @@ const productInterface = {
     backStoreShort: "Store",
     backStore: "To‘plamga qaytish",
     galleryLabel: "Mahsulot galereyasi",
+    galleryHint: "Suratlarni strelka yoki barmoq harakati bilan varaqlang",
+    previousImage: "Oldingi surat",
+    nextImage: "Keyingi surat",
     pilotStatus: "Sinov modeli",
     comingSoon: "Tez orada",
     chooseOption: "O‘lchamni tanlang",
@@ -84,13 +93,20 @@ const productInterface = {
   }
 };
 
+const galleryScene = (scene, alt) => ({ scene, alt });
+
 const productCatalog = {
   "screen-memory-posters": {
     code: "Print / 01",
     brand: "Kinoxona Archive",
     price: "от 90 000 UZS",
     options: ["A3", "A2"],
-    gallery: ["assets/screening-sorrentino.jpg", "assets/screening-alisher-navoi.jpg", "assets/screening-breathless.jpg"],
+    gallery: [
+      galleryScene("poster-wall", localized("Три постера Kinoxona в интерьере кинотеатра", "Three Kinoxona posters in a cinema interior", "Kinoteatr interyeridagi uchta Kinoxona posteri")),
+      "assets/screening-sorrentino.jpg",
+      "assets/screening-alisher-navoi.jpg",
+      "assets/screening-breathless.jpg"
+    ],
     title: localized("Постеры «Память экрана»", "Screen Memory posters", "«Ekran xotirasi» posterlari"),
     description: localized(
       "Нумерованные репринты афиш прошедших показов на плотной бумаге с архивным штампом Kinoxona.",
@@ -157,12 +173,17 @@ const productCatalog = {
     story: localized("Предмет ищет современный язык для связи кинотехнологии и местной текстильной культуры — без буквального фольклора.", "The object finds a contemporary link between film technology and local textile culture without literal folklore.", "Buyum kino texnologiyasi va mahalliy to‘qimachilik madaniyati o‘rtasida to‘g‘ridan-to‘g‘ri folklorsiz zamonaviy aloqa izlaydi.")
   },
   "uzbek-cinema-print": {
-    code: "Heritage / 07", brand: "Kinoxona Research", price: "120 000 UZS", options: ["A3", "A2"],
-    gallery: ["assets/screening-alisher-navoi.jpg", "assets/screening-amateur-uzbek-cinema.jpg", "assets/screening-cotton-100.jpg"],
-    title: localized("Принт «История узбекского кино»", "Uzbek Cinema History print", "«O‘zbek kinosi tarixi» printi"),
-    description: localized("Печатная исследовательская серия о важных фильмах и визуальной культуре узбекского экрана.", "A research-led print series on key films and the visual culture of Uzbek cinema.", "O‘zbek kinosining muhim filmlari va vizual madaniyati haqidagi tadqiqotga asoslangan bosma turkum."),
+    code: "Poster / 07", brand: "Kinoxona Research", price: "120 000 UZS", options: ["A3", "A2"],
+    gallery: [
+      galleryScene("navoi-wall", localized("Постер «Алишер Навои» в раме в исследовательской студии", "The Alisher Navoi poster framed in a research studio", "«Alisher Navoiy» posteri tadqiqot studiyasida ramkada")),
+      "assets/screening-alisher-navoi.jpg",
+      "assets/screening-amateur-uzbek-cinema.jpg",
+      "assets/screening-cotton-100.jpg"
+    ],
+    title: localized("Постер «Алишер Навои, 1947»", "Alisher Navoi, 1947 poster", "«Alisher Navoiy, 1947» posteri"),
+    description: localized("Коллекционный постер о фильме «Алишер Навои» — первая работа исследовательской серии об истории узбекского кино.", "A collectible poster devoted to Alisher Navoi — the first work in a research series on Uzbek cinema history.", "«Alisher Navoiy» filmiga bag‘ishlangan kolleksiya posteri — o‘zbek kinosi tarixi haqidagi tadqiqot turkumining birinchi ishi."),
     material: localized("Матовая архивная бумага · 250 GSM", "Matte archival paper · 250 GSM", "Mat arxiv qog‘ozi · 250 GSM"),
-    format: localized("A3 или A2 · исследовательская серия", "A3 or A2 · research series", "A3 yoki A2 · tadqiqot turkumi"),
+    format: localized("Постер A3 или A2 · нумерованный тираж", "A3 or A2 poster · numbered edition", "A3 yoki A2 poster · raqamlangan tiraj"),
     storyTitle: localized("Архив без витрины", "An archive without glass", "Vitrinasiz arxiv"),
     story: localized("Первая работа посвящена фильму «Алишер Навои» 1947 года. В галерее афиша показана целиком, а следующие изображения намечают продолжение серии об истории местного кино.", "The first piece is devoted to the 1947 film Alisher Navoi. The gallery shows the full poster and previews future subjects in the local cinema history series.", "Birinchi ish 1947-yildagi «Alisher Navoiy» filmiga bag‘ishlangan. Galereyada afisha to‘liq ko‘rsatilgan, keyingi tasvirlar esa mahalliy kino tarixi turkumining davomiga ishora qiladi."
     )
@@ -229,24 +250,85 @@ const savedProductLanguage = localStorage.getItem("kinoxona-language");
 let productLanguage = Object.hasOwn(productInterface, savedProductLanguage) ? savedProductLanguage : "ru";
 let activeImage = 0;
 
-const mainImage = document.querySelector("#product-image");
+const productMedia = document.querySelector("#product-media");
+const productMainImage = document.querySelector("#product-main-image");
 const imageCount = document.querySelector("#product-image-count");
 const thumbnails = document.querySelector("#product-thumbnails");
+const galleryPrevious = document.querySelector("#product-gallery-prev");
+const galleryNext = document.querySelector("#product-gallery-next");
+const galleryHint = document.querySelector(".product-gallery-hint");
 const cartNote = document.querySelector("#product-cart-note");
 const productMenuToggle = document.querySelector(".menu-toggle");
 const productNav = document.querySelector(".main-nav");
+
+const posterScenes = {
+  "poster-wall": {
+    className: "poster-room-set",
+    background: "assets/store-poster-wall.webp",
+    posters: [
+      ["assets/screening-sorrentino.jpg", "poster-frame-left"],
+      ["assets/screening-alisher-navoi.jpg", "poster-frame-right"],
+      ["assets/screening-breathless.jpg", "poster-frame-lower"]
+    ]
+  },
+  "navoi-wall": {
+    className: "poster-room-navoi",
+    background: "assets/store-navoi-wall.webp",
+    posters: [["assets/screening-alisher-navoi.jpg", "poster-frame-navoi"]]
+  }
+};
 
 function localValue(value) {
   return value?.[productLanguage] ?? value?.ru ?? "";
 }
 
+function createGalleryMedia(item, thumbnail = false) {
+  if (typeof item === "string") {
+    const image = document.createElement("img");
+    image.src = item;
+    image.alt = thumbnail ? "" : `${localValue(product.title)} — ${activeImage + 1}`;
+    image.loading = thumbnail ? "lazy" : "eager";
+    image.draggable = false;
+    return image;
+  }
+
+  const sceneData = posterScenes[item.scene];
+  const scene = document.createElement("div");
+  scene.className = `product-interior-scene poster-room ${sceneData.className}`;
+  if (thumbnail) {
+    scene.setAttribute("aria-hidden", "true");
+  } else {
+    scene.setAttribute("role", "img");
+    scene.setAttribute("aria-label", localValue(item.alt));
+  }
+
+  const background = document.createElement("img");
+  background.className = "poster-room-backdrop";
+  background.src = sceneData.background;
+  background.alt = "";
+  background.loading = thumbnail ? "lazy" : "eager";
+  background.draggable = false;
+  scene.append(background);
+
+  sceneData.posters.forEach(([source, className]) => {
+    const poster = document.createElement("img");
+    poster.className = `poster-in-frame ${className}`;
+    poster.src = source;
+    poster.alt = "";
+    poster.loading = thumbnail ? "lazy" : "eager";
+    poster.draggable = false;
+    scene.append(poster);
+  });
+
+  return scene;
+}
+
 function selectProductImage(index) {
-  activeImage = index;
-  mainImage.src = product.gallery[index];
-  mainImage.alt = `${localValue(product.title)} — ${index + 1}`;
-  imageCount.textContent = `${String(index + 1).padStart(2, "0")} / ${String(product.gallery.length).padStart(2, "0")}`;
+  activeImage = (index + product.gallery.length) % product.gallery.length;
+  productMedia.replaceChildren(createGalleryMedia(product.gallery[activeImage]));
+  imageCount.textContent = `${String(activeImage + 1).padStart(2, "0")} / ${String(product.gallery.length).padStart(2, "0")}`;
   document.querySelectorAll(".product-thumbnail").forEach((button, buttonIndex) => {
-    const isActive = buttonIndex === index;
+    const isActive = buttonIndex === activeImage;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
@@ -254,19 +336,19 @@ function selectProductImage(index) {
 
 function renderGallery() {
   thumbnails.replaceChildren();
-  product.gallery.forEach((source, index) => {
+  product.gallery.forEach((item, index) => {
     const button = document.createElement("button");
     button.className = "product-thumbnail";
     button.type = "button";
     button.setAttribute("aria-label", `${localValue(product.title)} — ${index + 1}`);
-    const image = document.createElement("img");
-    image.src = source;
-    image.alt = "";
-    image.loading = "lazy";
-    button.append(image);
+    button.append(createGalleryMedia(item, true));
     button.addEventListener("click", () => selectProductImage(index));
     thumbnails.append(button);
   });
+  const hasMultipleImages = product.gallery.length > 1;
+  galleryPrevious.hidden = !hasMultipleImages;
+  galleryNext.hidden = !hasMultipleImages;
+  galleryHint.hidden = !hasMultipleImages;
   selectProductImage(Math.min(activeImage, product.gallery.length - 1));
 }
 
@@ -341,6 +423,58 @@ document.querySelector("#product-cart-button").addEventListener("click", () => {
 document.querySelector("[data-i18n='sizeGuide']").addEventListener("click", () => {
   cartNote.textContent = productInterface[productLanguage].cartNote;
   cartNote.hidden = false;
+});
+
+galleryPrevious.addEventListener("click", () => selectProductImage(activeImage - 1));
+galleryNext.addEventListener("click", () => selectProductImage(activeImage + 1));
+
+productMainImage.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    selectProductImage(activeImage - 1);
+  }
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    selectProductImage(activeImage + 1);
+  }
+});
+
+let galleryPointerStart = null;
+productMainImage.addEventListener("pointerdown", (event) => {
+  if (!event.isPrimary || event.pointerType === "mouse") return;
+  galleryPointerStart = { x: event.clientX, y: event.clientY };
+});
+
+productMainImage.addEventListener("pointerup", (event) => {
+  if (!galleryPointerStart || !event.isPrimary) return;
+  const horizontalDistance = event.clientX - galleryPointerStart.x;
+  const verticalDistance = event.clientY - galleryPointerStart.y;
+  galleryPointerStart = null;
+  if (Math.abs(horizontalDistance) < 45 || Math.abs(horizontalDistance) < Math.abs(verticalDistance)) return;
+  selectProductImage(activeImage + (horizontalDistance < 0 ? 1 : -1));
+});
+
+productMainImage.addEventListener("pointercancel", () => {
+  galleryPointerStart = null;
+});
+
+const fallbackStoreUrl = `store.html?return=${encodeURIComponent(productId)}#product-${encodeURIComponent(productId)}`;
+let savedStoreState = null;
+try {
+  savedStoreState = JSON.parse(sessionStorage.getItem("kinoxona-store-return") || "null");
+} catch {
+  savedStoreState = null;
+}
+
+document.querySelectorAll("[data-store-return]").forEach((link) => {
+  link.href = fallbackStoreUrl;
+  link.addEventListener("click", (event) => {
+    const canReturnThroughHistory = productParams.get("from") === "store" && savedStoreState?.productId === productId;
+    if (!canReturnThroughHistory) return;
+    event.preventDefault();
+    sessionStorage.setItem("kinoxona-store-restore", productId);
+    window.history.back();
+  });
 });
 
 productMenuToggle?.addEventListener("click", () => {

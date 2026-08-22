@@ -8,9 +8,9 @@
     <title>Kinoxona Store — товар</title>
     <link rel="icon" href="assets/kinoxona-logo.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="store.css?v=20260822-2" />
-    <link rel="stylesheet" href="product.css?v=20260822-1" />
-    <script src="product.js?v=20260822-1" defer></script>
+    <link rel="stylesheet" href="store.css?v=20260822-3" />
+    <link rel="stylesheet" href="product.css?v=20260822-2" />
+    <script src="product.js?v=20260822-2" defer></script>
   </head>
   <body class="store-page product-page">
     <a class="skip-link" href="#product-main" data-i18n="skipContent">К содержанию</a>
@@ -26,7 +26,7 @@
       </button>
 
       <nav class="main-nav" id="product-nav" aria-label="Основная навигация" data-i18n-aria="mainNavigation">
-        <a href="store.html#collection" data-i18n="navStore">Магазин</a>
+        <a href="store.html#collection" data-store-return data-i18n="navStore">Магазин</a>
         <a href="store.html#idea" data-i18n="navIdea">Идея</a>
         <a href="index.html" data-i18n="navCinema">В кинотеатр</a>
       </nav>
@@ -39,7 +39,7 @@
           <span>/</span>
           <button class="language-button" type="button" data-lang="uz">UZ</button>
         </div>
-        <a class="ticket-link" href="store.html#collection">
+        <a class="ticket-link" href="store.html#collection" data-store-return>
           <span data-i18n="backStoreShort">Store</span>
           <span aria-hidden="true">↙</span>
         </a>
@@ -47,17 +47,24 @@
     </header>
 
     <main id="product-main">
-      <a class="product-back" href="store.html#collection">
+      <a class="product-back" href="store.html#collection" data-store-return>
         <span aria-hidden="true">←</span>
         <span data-i18n="backStore">Вернуться в коллекцию</span>
       </a>
 
       <section class="product-detail" aria-labelledby="product-title">
         <div class="product-gallery" aria-label="Галерея товара" data-i18n-aria="galleryLabel">
-          <div class="product-main-image">
-            <img id="product-image" src="" alt="" />
+          <div class="product-main-image" id="product-main-image" tabindex="0" aria-label="Галерея товара" data-i18n-aria="galleryLabel">
+            <div class="product-media" id="product-media"></div>
+            <button class="product-gallery-arrow product-gallery-prev" id="product-gallery-prev" type="button" aria-label="Предыдущее фото" data-i18n-aria="previousImage">
+              <span aria-hidden="true">←</span>
+            </button>
+            <button class="product-gallery-arrow product-gallery-next" id="product-gallery-next" type="button" aria-label="Следующее фото" data-i18n-aria="nextImage">
+              <span aria-hidden="true">→</span>
+            </button>
             <span class="product-image-count" id="product-image-count">01 / 01</span>
           </div>
+          <p class="product-gallery-hint" data-i18n="galleryHint">Листайте фотографии стрелками или движением пальца</p>
           <div class="product-thumbnails" id="product-thumbnails"></div>
         </div>
 
@@ -109,7 +116,7 @@
       <div class="footer-logo"><img src="assets/kinoxona-logo.png" alt="Kinoxona" /></div>
       <p data-i18n="footerCopy">Концепт магазина. Финальные модели, наличие и даты запуска будут объявлены отдельно.</p>
       <div class="footer-links">
-        <a href="store.html#collection" data-i18n="backStore">Вернуться в коллекцию</a>
+        <a href="store.html#collection" data-store-return data-i18n="backStore">Вернуться в коллекцию</a>
         <a href="https://www.instagram.com/kinoxona_tfs/" target="_blank" rel="noreferrer">Instagram ↗</a>
       </div>
       <p class="copyright">© <span id="year"></span> Kinoxona Store</p>

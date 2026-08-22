@@ -38,8 +38,8 @@ const storeTranslations = {
     toteTitle: "Шопер «Кино и орнамент»",
     toteCopy: "Геометрия киноплёнки встречается с ритмами узбекского иката — без фольклорного китча.",
     researchSeries: "Исследовательская серия",
-    heritageTitle: "Принт «История узбекского кино»",
-    heritageCopy: "Современная печатная серия о важных фильмах, режиссёрах и визуальной культуре узбекского экрана.",
+    heritageTitle: "Постер «Алишер Навои, 1947»",
+    heritageCopy: "Коллекционный постер — первая работа исследовательской серии об истории узбекского кино.",
     zineTitle: "Зин «Память экрана»",
     zineCopy: "Фотографии, афиши, заметки и разговоры первых сезонов Kinoxona в одном небольшом издании.",
     viewProduct: "Открыть товар ↗",
@@ -102,8 +102,8 @@ const storeTranslations = {
     toteTitle: "Film & Ornament tote",
     toteCopy: "The geometry of film perforations meets the rhythm of Uzbek ikat in a restrained modern pattern.",
     researchSeries: "Research series",
-    heritageTitle: "Uzbek Cinema History print",
-    heritageCopy: "A contemporary print series devoted to key films, filmmakers and the visual culture of the Uzbek screen.",
+    heritageTitle: "Alisher Navoi, 1947 poster",
+    heritageCopy: "A collectible poster — the first work in a research series on the history of Uzbek cinema.",
     zineTitle: "Screen Memory zine",
     zineCopy: "Photographs, posters, notes and conversations from Kinoxona’s first seasons in one compact edition.",
     viewProduct: "View product ↗",
@@ -166,8 +166,8 @@ const storeTranslations = {
     toteTitle: "«Kino va naqsh» shopperi",
     toteCopy: "Kinoplyonka geometriyasi o‘zbek ikati ritmlari bilan zamonaviy va vazmin naqshda uchrashadi.",
     researchSeries: "Tadqiqot turkumi",
-    heritageTitle: "«O‘zbek kinosi tarixi» printi",
-    heritageCopy: "O‘zbek ekranining muhim filmlari, rejissyorlari va vizual madaniyatiga bag‘ishlangan zamonaviy bosma turkum.",
+    heritageTitle: "«Alisher Navoiy, 1947» posteri",
+    heritageCopy: "O‘zbek kinosi tarixi haqidagi tadqiqot turkumining birinchi kolleksiya posteri.",
     zineTitle: "«Ekran xotirasi» zini",
     zineCopy: "Kinoxona’ning ilk mavsumlaridagi suratlar, afishalar, qaydlar va suhbatlar jamlangan ixcham nashr.",
     viewProduct: "Mahsulotni ochish ↗",
@@ -265,7 +265,8 @@ document.querySelectorAll(".reveal").forEach((element) => storeObserver.observe(
 document.querySelector("#year").textContent = new Date().getFullYear();
 
 document.querySelectorAll("[data-product]").forEach((card) => {
-  const productUrl = `product.html?id=${encodeURIComponent(card.dataset.product)}`;
+  const productId = card.dataset.product;
+  const productUrl = `product.html?id=${encodeURIComponent(productId)}&from=store`;
   const visual = card.querySelector(".product-visual");
   const openLabel = document.createElement("span");
   openLabel.className = "product-open";
@@ -273,10 +274,17 @@ document.querySelectorAll("[data-product]").forEach((card) => {
   visual?.append(openLabel);
 
   card.classList.add("product-card-clickable");
+  card.id = `product-${productId}`;
   card.setAttribute("role", "link");
   card.setAttribute("tabindex", "0");
 
-  const openProduct = () => { window.location.href = productUrl; };
+  const openProduct = () => {
+    sessionStorage.setItem("kinoxona-store-return", JSON.stringify({
+      productId,
+      scrollY: window.scrollY
+    }));
+    window.location.href = productUrl;
+  };
   card.addEventListener("click", openProduct);
   card.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -287,3 +295,38 @@ document.querySelectorAll("[data-product]").forEach((card) => {
 });
 
 setStoreLanguage(storeLanguage);
+
+function restoreStorePosition() {
+  const returnFromQuery = new URLSearchParams(window.location.search).get("return");
+  const returnFromHistory = sessionStorage.getItem("kinoxona-store-restore");
+  const productToRestore = returnFromQuery || returnFromHistory;
+  if (!productToRestore) return;
+
+  let storedState = null;
+  try {
+    storedState = JSON.parse(sessionStorage.getItem("kinoxona-store-return") || "null");
+  } catch {
+    storedState = null;
+  }
+
+  const targetCard = document.querySelector(`[data-product="${CSS.escape(productToRestore)}"]`);
+  const restore = () => {
+    if (storedState?.productId === productToRestore && Number.isFinite(storedState.scrollY)) {
+      window.scrollTo(0, storedState.scrollY);
+    } else {
+      targetCard?.scrollIntoView({ block: "center" });
+    }
+  };
+
+  requestAnimationFrame(() => requestAnimationFrame(restore));
+  window.setTimeout(restore, 180);
+  sessionStorage.removeItem("kinoxona-store-restore");
+
+  if (returnFromQuery) {
+    const cleanUrl = new URL(window.location.href);
+    cleanUrl.searchParams.delete("return");
+    window.history.replaceState(null, "", `${cleanUrl.pathname}${cleanUrl.search}${cleanUrl.hash}`);
+  }
+}
+
+window.addEventListener("pageshow", restoreStorePosition);
