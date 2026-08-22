@@ -264,7 +264,7 @@ const productNav = document.querySelector(".main-nav");
 const posterScenes = {
   "poster-wall": {
     className: "poster-room-set",
-    background: "assets/store-poster-scene-v4.webp",
+    background: "assets/store-poster-scene-v5.png",
     posters: []
   },
   "navoi-wall": {
