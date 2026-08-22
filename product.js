@@ -231,7 +231,7 @@ const productCatalog = {
   },
   "sestra-cap": {
     code: "Wear / 12", brand: "SES TRA × Kinoxona", price: "210 000 UZS", options: ["ONE"],
-    gallery: ["assets/store-sestra-cap-commerce.webp", "assets/store-sestra-cap-detail.webp", "assets/store-sestra-cap.webp"],
+    gallery: ["assets/store-sestra-cap-commerce-v2.webp", "assets/store-sestra-cap-detail-v2.webp", "assets/store-sestra-cap-v2.webp"],
     title: localized("Кепка SES TRA", "SES TRA cap", "SES TRA kepkasi"),
     description: localized("Чёрная шестипанельная кепка с розовой вышивкой SES TRA.", "A black six-panel cap finished with pink SES TRA embroidery.", "Pushti SES TRA kashtasi tushirilgan qora olti panelli kepka."),
     material: localized("Хлопковый твил · вышивка", "Cotton twill · embroidery", "Paxta tvil · kashta"),
@@ -264,11 +264,11 @@ const productNav = document.querySelector(".main-nav");
 const posterScenes = {
   "poster-wall": {
     className: "poster-room-set",
-    background: "assets/store-poster-wall.webp",
+    background: "assets/store-poster-wall-v2.webp",
     posters: [
       ["assets/screening-sorrentino.jpg", "poster-frame-left"],
-      ["assets/screening-alisher-navoi.jpg", "poster-frame-right"],
-      ["assets/screening-breathless.jpg", "poster-frame-lower"]
+      ["assets/store-easter-portrait.webp", "poster-frame-right poster-easter-portrait"],
+      ["assets/screening-alisher-navoi.jpg", "poster-frame-lower"]
     ]
   },
   "navoi-wall": {
